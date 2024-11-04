@@ -1,10 +1,33 @@
+"use client";
+
+import React, {ReactNode} from "react";
 import { GiHummingbird } from "react-icons/gi";
+import { useState } from "react"
+import { MdClose } from "react-icons/md";
+
+interface Props {
+  children?: ReactNode
+}
+
+const MenuItem = ({children}: Props) => {
+  return ( <li><button className="px-10" style={{ fontSize: "100px" }}>{ children }</button></li>)
+}
 
 export default function Home() {
+
+const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const openMenu = () => {
+  setIsMenuOpen(true)
+  }
+  
+  const closeMenu = () => { setIsMenuOpen(false) }
+  
+  
   return (<main className="p-4">
-    <button className="block relative z-20 mx-auto p-6 border-dark border-solid border-2 transition-colors rounded-full hover:bg-dark hover:text-orange">
+    <button onClick={openMenu} className="block relative z-20 mx-auto p-6 border-dark border-solid border-2 transition-colors rounded-full hover:bg-dark hover:text-orange">
         <GiHummingbird size={60} />
-      </button>
+    </button>
     <section className="flex items-center z-10 justify-center absolute left-0 right-0 top-0 bottom-0 bg-orange">
       <div className="text-center">
       <h1 style={{fontSize: "144px"}}>
@@ -13,6 +36,29 @@ export default function Home() {
       <p style={{fontSize: "72px"}}>Senior Software Engineer</p>
       </div>
     </section>
+    {isMenuOpen && (
+      <nav className="z-30 absolute left-0 top-0 right-0 bottom-0 bg-dark">
+        <button className="p-6 text-orange mx-auto block" onClick={closeMenu}>
+        <MdClose size={100} />
+        </button>
+      <ul className="text-white flex w-full justify-center">
+       
+          <MenuItem>
+          About
+          </MenuItem>
+       
+        <MenuItem>
+          Portfolio
+          </MenuItem>
+       
+        <MenuItem>
+          Contact
+          </MenuItem>
+       
+      </ul>
+    </nav>
+)}
+    
     </main>
   );
 }
