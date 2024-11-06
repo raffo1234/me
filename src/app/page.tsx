@@ -10,15 +10,15 @@ import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 interface Props {
   children?: ReactNode;
   isActive?: boolean;
-  setRotate: Dispatch<SetStateAction<number>>;
-  rotate: number;
+  setPage: Dispatch<SetStateAction<number>>;
+  page: number;
 }
 
-const MenuItem = ({ children, isActive, rotate, setRotate }: Props) => {
+const MenuItem = ({ children, isActive, page, setPage }: Props) => {
   return (
     <li className="block">
       <button
-        onClick={() => setRotate(rotate)}
+        onClick={() => setPage(page)}
         className={`${
           isActive ? "bg-gray100 text-gray10" : "hover:bg-gray20"
         } block text-right w-full p-4 transition-colors duration-500`}
@@ -31,7 +31,7 @@ const MenuItem = ({ children, isActive, rotate, setRotate }: Props) => {
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [rotate, setRotate] = useState(0);
+  const [page, setPage] = useState(0);
 
   const openMenu = () => {
     setIsMenuOpen(true);
@@ -43,6 +43,25 @@ export default function Home() {
 
   const now = new Date();
   const currentYear = now.getFullYear();
+
+  const pages = [
+    {
+      title: "Home",
+      deg: 0,
+    },
+    {
+      title: "About me",
+      deg: 90,
+    },
+    {
+      title: "Portfolio",
+      deg: 180,
+    },
+    {
+      title: "Contact",
+      deg: 270,
+    },
+  ];
 
   return (
     <>
@@ -59,29 +78,17 @@ export default function Home() {
         </header>
         <nav className="w-full pt-10">
           <ul className="block text-md leading-5 font-roboto">
-            <MenuItem setRotate={setRotate} rotate={0} isActive={rotate === 0}>
-              Home
+            <MenuItem setPage={setPage} page={0} isActive={page === 0}>
+              {pages.at(0)?.title}
             </MenuItem>
-            <MenuItem
-              setRotate={setRotate}
-              rotate={90}
-              isActive={rotate === 90}
-            >
-              About me
+            <MenuItem setPage={setPage} page={1} isActive={page === 1}>
+              {pages.at(1)?.title}
             </MenuItem>
-            <MenuItem
-              setRotate={setRotate}
-              rotate={180}
-              isActive={rotate === 180}
-            >
-              Portfolio
+            <MenuItem setPage={setPage} page={2} isActive={page === 2}>
+              {pages.at(2)?.title}
             </MenuItem>
-            <MenuItem
-              setRotate={setRotate}
-              rotate={270}
-              isActive={rotate === 270}
-            >
-              Contact
+            <MenuItem setPage={setPage} page={3} isActive={page === 3}>
+              {pages.at(3)?.title}
             </MenuItem>
           </ul>
         </nav>
@@ -113,12 +120,31 @@ export default function Home() {
           />
           <div className="relative w-full h-full overflow-hidden">
             <div
-              style={{ transform: `rotate(${rotate}deg)` }}
+              style={{ transform: `rotate(${pages.at(page)?.deg}deg)` }}
               className={`transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
             >
               <div className="absolute left-0 top-0 w-full h-full rounded-full border-[12px] border-white"></div>
               <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[12px] border-r-[12px] border-yellow10"></div>
             </div>
+            <button
+              onClick={() => setPage(0)}
+              className="absolute right-0 top-0 w-1/2 h-1/2 rounded-tr-full"
+            ></button>
+            <button
+              onClick={() => setPage(1)}
+              className="absolute right-0 bottom-0 w-1/2 h-1/2 rounded-br-full"
+            ></button>
+            <button
+              onClick={() => setPage(2)}
+              className="absolute left-0 bottom-0 w-1/2 h-1/2 rounded-bl-full"
+            ></button>
+            <button
+              onClick={() => setPage(3)}
+              className="absolute left-0 top-0 w-1/2 h-1/2 rounded-tl-full"
+            ></button>
+            <h2 className="absolute right-0 top-0 font-barbra text-[90px]">
+              {pages.at(page)?.title}
+            </h2>
           </div>
         </section>
         <nav

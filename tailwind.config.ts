@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         roboto: ["roboto", "sans-serif"],
         druk: ["druk", "sans-serif"],
+        barbra: ["barbra", "sans-serif"],
       },
       colors: {
         gray10: "#F7F6F8",

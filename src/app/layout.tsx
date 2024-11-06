@@ -14,6 +14,12 @@ const roboto = localFont({
   weight: "400",
 });
 
+const barbra = localFont({
+  src: "./fonts/barbra-regular.woff",
+  variable: "--font-barbra",
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Rafael Meza",
   description: "Senior Software Engineer",
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${druk.variable} ${roboto.variable} antialiased bg-gray10 text-gray100`}
+        className={`${druk.variable} ${roboto.variable} ${barbra.variable} antialiased bg-gray10 text-gray100`}
       >
         {children}
       </body>
