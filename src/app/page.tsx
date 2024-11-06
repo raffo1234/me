@@ -41,6 +41,9 @@ export default function Home() {
     setIsMenuOpen(false);
   };
 
+  const now = new Date();
+  const currentYear = now.getFullYear();
+
   return (
     <>
       <div className="absolute left-0 top-0 w-[250px]">
@@ -129,8 +132,8 @@ export default function Home() {
             <MdClose size={100} />
           </button>
         </nav>
-        <footer className="absolute p-6 right-0 bottom-0 text-right">
-          <div className="flex space-x-4 mb-2 justify-end">
+        <footer className="absolute p-6 right-0 bottom-0">
+          <div className="flex mb-2 justify-end">
             <a
               href="https://www.linkedin.com/in/rafael-meza-280602123/"
               target="_blank"
@@ -150,7 +153,9 @@ export default function Home() {
               <FaGithub size={20} />
             </a>
           </div>
-          <p className="text-sm">© 2024 Rafael Meza. All rights reserved.</p>
+          <p className="text-sm">
+            © {currentYear} Rafael Meza. All rights reserved.
+          </p>
         </footer>
       </main>
     </>
