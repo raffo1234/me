@@ -20,6 +20,7 @@ const config: Config = {
         yellow10: "#FFD301",
         yellow100: "#ACA360" 
       },
+      
     },
   },
   plugins: [],

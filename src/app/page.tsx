@@ -5,16 +5,23 @@ import React, { ReactNode } from "react";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
-import Link from "next/link";
 
 interface Props {
   children?: ReactNode;
+  isActive?: boolean;
+  setRotate?: any;
+  rotate: number;
 }
 
-const MenuItem = ({ children }: Props) => {
+const MenuItem = ({ children, isActive, rotate, setRotate }: Props) => {
   return (
-    <li>
-      <button className="px-10" style={{ fontSize: "100px" }}>
+    <li className="block">
+      <button
+        onClick={() => setRotate(rotate)}
+        className={`${
+          isActive ? "bg-gray100 text-gray10" : "hover:bg-gray20"
+        } block text-right w-full p-4 transition-colors duration-500`}
+      >
         {children}
       </button>
     </li>
@@ -23,6 +30,7 @@ const MenuItem = ({ children }: Props) => {
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [rotate, setRotate] = useState(0);
 
   const openMenu = () => {
     setIsMenuOpen(true);
@@ -46,31 +54,31 @@ export default function Home() {
           </div>
         </header>
         <nav className="w-full pt-10">
-          <ul className="block text-right text-md leading-5 font-roboto">
-            <li className="block">
-              <Link
-                href="/"
-                className="block p-4 hover:bg-gray20 transition-colors duration-500"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className="block bg-gray100 text-gray10 p-4 transition-colors duration-500"
-              >
-                Portfolio
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className="block p-4 hover:bg-gray20 transition-colors duration-500"
-              >
-                Contact
-              </Link>
-            </li>
+          <ul className="block text-md leading-5 font-roboto">
+            <MenuItem setRotate={setRotate} rotate={0} isActive={rotate === 0}>
+              Home
+            </MenuItem>
+            <MenuItem
+              setRotate={setRotate}
+              rotate={90}
+              isActive={rotate === 90}
+            >
+              About me
+            </MenuItem>
+            <MenuItem
+              setRotate={setRotate}
+              rotate={180}
+              isActive={rotate === 180}
+            >
+              Portfolio
+            </MenuItem>
+            <MenuItem
+              setRotate={setRotate}
+              rotate={270}
+              isActive={rotate === 270}
+            >
+              Contact
+            </MenuItem>
           </ul>
         </nav>
       </div>
@@ -95,8 +103,17 @@ export default function Home() {
       </a>
       <main className="p-4">
         <section className="relative m-auto border-2 p-3 border-gray20 w-[800px] h-[800px] rounded-full">
-          <div className="className  border-[12px] border-white w-full h-full rounded-full flex items-center justify-center">
-            <GiHummingbird size={132} />
+          <GiHummingbird
+            size={132}
+            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+          />
+          <div className="relative w-full h-full overflow-hidden">
+            <div
+              className={`rotate-[${rotate}deg] transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
+            >
+              <div className="absolute left-0 top-0 w-full h-full rounded-full border-[12px] border-white"></div>
+              <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[12px] border-r-[12px] border-yellow10"></div>
+            </div>
           </div>
         </section>
         <nav
@@ -109,11 +126,6 @@ export default function Home() {
           <button className="p-6 text-orange mx-auto block" onClick={closeMenu}>
             <MdClose size={100} />
           </button>
-          <ul className="text-white flex w-full justify-center">
-            <MenuItem>About</MenuItem>
-            <MenuItem>Portfolio</MenuItem>
-            <MenuItem>Contact</MenuItem>
-          </ul>
         </nav>
       </main>
     </>
