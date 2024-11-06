@@ -1,7 +1,7 @@
 "use client";
 
 import { GiHummingbird } from "react-icons/gi";
-import React, { ReactNode } from "react";
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
@@ -10,7 +10,7 @@ import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 interface Props {
   children?: ReactNode;
   isActive?: boolean;
-  setRotate?: any;
+  setRotate: Dispatch<SetStateAction<number>>;
   rotate: number;
 }
 
@@ -110,7 +110,8 @@ export default function Home() {
           />
           <div className="relative w-full h-full overflow-hidden">
             <div
-              className={`rotate-[${rotate}deg] transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
+              style={{ transform: `rotate(${rotate}deg)` }}
+              className={`transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
             >
               <div className="absolute left-0 top-0 w-full h-full rounded-full border-[12px] border-white"></div>
               <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[12px] border-r-[12px] border-yellow10"></div>
