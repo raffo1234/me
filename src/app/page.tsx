@@ -5,6 +5,7 @@ import React, { ReactNode } from "react";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 interface Props {
   children?: ReactNode;
@@ -127,6 +128,29 @@ export default function Home() {
             <MdClose size={100} />
           </button>
         </nav>
+        <footer className="absolute p-6 right-0 bottom-0 text-right">
+          <div className="flex space-x-4 mb-2 justify-end">
+            <a
+              href="https://www.linkedin.com/in/rafael-meza-280602123/"
+              target="_blank"
+              rel="noreferrer"
+              title="Rafael Meza | Linkedin"
+              className="p-3 rounded-full hover:bg-yellow10"
+            >
+              <FaLinkedinIn size={20} />
+            </a>
+            <a
+              href="https://github.com/raffo1234"
+              rel="noreferrer"
+              target="_blank"
+              title="Rafael Meza | Github"
+              className="p-3 rounded-full hover:bg-yellow10"
+            >
+              <FaGithub size={20} />
+            </a>
+          </div>
+          <p className="text-sm">© 2024 Rafael Meza. All rights reserved.</p>
+        </footer>
       </main>
     </>
   );
