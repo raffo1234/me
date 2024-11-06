@@ -78,18 +78,16 @@ export default function Home() {
         </header>
         <nav className="w-full pt-10">
           <ul className="block text-md leading-5 font-roboto">
-            <MenuItem setPage={setPage} page={0} isActive={page === 0}>
-              {pages.at(0)?.title}
-            </MenuItem>
-            <MenuItem setPage={setPage} page={1} isActive={page === 1}>
-              {pages.at(1)?.title}
-            </MenuItem>
-            <MenuItem setPage={setPage} page={2} isActive={page === 2}>
-              {pages.at(2)?.title}
-            </MenuItem>
-            <MenuItem setPage={setPage} page={3} isActive={page === 3}>
-              {pages.at(3)?.title}
-            </MenuItem>
+            {pages.map((_, index) => (
+              <MenuItem
+                key={index}
+                setPage={setPage}
+                page={index}
+                isActive={page === index}
+              >
+                {pages.at(index)?.title}
+              </MenuItem>
+            ))}
           </ul>
         </nav>
       </div>
@@ -113,7 +111,7 @@ export default function Home() {
         <span className="underline">Download Resume</span>
       </a>
       <main className="p-4">
-        <section className="relative m-auto border-2 p-3 border-gray20 w-[800px] h-[800px] rounded-full">
+        <section className="relative m-auto border-2 p-4 border-gray20 w-[800px] h-[800px] rounded-full">
           <GiHummingbird
             size={132}
             className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
@@ -123,8 +121,8 @@ export default function Home() {
               style={{ transform: `rotate(${pages.at(page)?.deg}deg)` }}
               className={`transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
             >
-              <div className="absolute left-0 top-0 w-full h-full rounded-full border-[12px] border-white"></div>
-              <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[12px] border-r-[12px] border-yellow10"></div>
+              <div className="absolute left-0 top-0 w-full h-full rounded-full border-[16px] border-white"></div>
+              <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[16px] border-r-[16px] border-yellow10"></div>
             </div>
             <button
               onClick={() => setPage(0)}
