@@ -8,11 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ["roboto", "sans-serif"],
+        druk: ["druk", "sans-serif"],
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        dark: "#1a1a1a",
-        orange: "#e27806"
+        gray10: "#F7F6F8",
+        gray20: "#C7C2BA",
+        gray50: "#837B69",
+        gray100: "#38332B",
+        yellow10: "#FFD301",
+        yellow100: "#ACA360" 
       },
     },
   },
