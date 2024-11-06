@@ -133,13 +133,13 @@ export default function Home() {
           </button>
         </nav>
         <footer className="absolute p-6 right-0 bottom-0">
-          <div className="flex mb-2 justify-end">
+          <div className="flex mb-2 space-x-3 justify-end">
             <a
               href="https://www.linkedin.com/in/rafael-meza-280602123/"
               target="_blank"
               rel="noreferrer"
               title="Rafael Meza | Linkedin"
-              className="p-3 rounded-full hover:bg-yellow10"
+              className="p-3 rounded-full hover:bg-yellow10 transition-colors duration-500"
             >
               <FaLinkedinIn size={20} />
             </a>
@@ -148,7 +148,7 @@ export default function Home() {
               rel="noreferrer"
               target="_blank"
               title="Rafael Meza | Github"
-              className="p-3 rounded-full hover:bg-yellow10"
+              className="p-3 rounded-full hover:bg-yellow10 transition-colors duration-500"
             >
               <FaGithub size={20} />
             </a>
