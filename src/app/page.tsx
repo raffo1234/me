@@ -165,18 +165,24 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               title="Rafael Meza | Linkedin"
-              className="p-3 rounded-full hover:bg-yellow10 transition-colors duration-500"
+              className="p-3 rounded-full hover:bg-yellow10 transition-colors duration-500 group"
             >
-              <FaLinkedinIn size={20} />
+              <FaLinkedinIn
+                size={20}
+                className="transition-transform group-hover:scale-105"
+              />
             </a>
             <a
               href="https://github.com/raffo1234"
               rel="noreferrer"
               target="_blank"
               title="Rafael Meza | Github"
-              className="p-3 rounded-full hover:bg-yellow10 transition-colors duration-500"
+              className="p-3 rounded-full hover:bg-yellow10 transition-colors duration-500 group"
             >
-              <FaGithub size={20} />
+              <FaGithub
+                size={20}
+                className="transition-transform group-hover:scale-105"
+              />
             </a>
           </div>
           <p className="text-sm">
