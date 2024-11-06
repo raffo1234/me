@@ -35,10 +35,15 @@ export default function Home() {
   return (
     <>
       <div className="absolute left-0 top-0 w-[250px]">
-        <header className="bg-yellow10 h-[500px] flex items-center justify-center text-[90px] leading-[4.5rem]">
-          <h1 className="tracking-wider font-druk">
-            RAFAEL <br /> MEZA
-          </h1>
+        <header className="bg-yellow10 h-[500px] flex items-center justify-center leading-[4.5rem]">
+          <div>
+            <h1 className="tracking-wider text-[90px] font-druk mb-2">
+              RAFAEL <br /> MEZA
+            </h1>
+            <span className="block font-roboto text-sm tracking-tighter">
+              SOFTWARE ENGINEER
+            </span>
+          </div>
         </header>
         <nav className="w-full pt-10">
           <ul className="block text-right text-md leading-5 font-roboto">
