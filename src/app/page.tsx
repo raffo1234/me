@@ -1,7 +1,7 @@
 "use client";
 
 import { GiHummingbird } from "react-icons/gi";
-import React, { Dispatch, ReactNode, SetStateAction } from "react";
+import React, { useEffect, Dispatch, ReactNode, SetStateAction } from "react";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
@@ -11,6 +11,7 @@ interface Props {
   children?: ReactNode;
   isActive?: boolean;
   setPage: Dispatch<SetStateAction<number>>;
+  setEffect: Dispatch<SetStateAction<boolean>>;
   page: number;
 }
 
@@ -32,6 +33,7 @@ const MenuItem = ({ children, isActive, page, setPage }: Props) => {
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [page, setPage] = useState(0);
+  const [effect, setEffect] = useState(false);
 
   const openMenu = () => {
     setIsMenuOpen(true);
@@ -63,6 +65,10 @@ export default function Home() {
     },
   ];
 
+  useEffect(() => {
+    setEffect(true);
+  }, [page]);
+
   return (
     <>
       <div className="absolute left-0 top-0 w-[250px]">
@@ -84,6 +90,7 @@ export default function Home() {
                 setPage={setPage}
                 page={index}
                 isActive={page === index}
+                setEffect={setEffect}
               >
                 {pages.at(index)?.title}
               </MenuItem>
@@ -140,7 +147,12 @@ export default function Home() {
               onClick={() => setPage(3)}
               className="absolute left-0 top-0 w-1/2 h-1/2 rounded-tl-full"
             ></button>
-            <h2 className="absolute right-0 top-0 font-barbra text-[90px]">
+            <h2
+              onAnimationEnd={() => setEffect(false)}
+              className={`${
+                effect ? "animate-fade" : ""
+              } absolute right-0 top-0 font-barbra text-[90px]`}
+            >
               {pages.at(page)?.title}
             </h2>
           </div>
