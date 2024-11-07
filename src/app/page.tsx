@@ -1,7 +1,7 @@
 "use client";
 
 import { GiHummingbird } from "react-icons/gi";
-import React, { useEffect, Dispatch, ReactNode, SetStateAction } from "react";
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
@@ -13,13 +13,26 @@ interface Props {
   setPage: Dispatch<SetStateAction<number>>;
   setEffect: Dispatch<SetStateAction<boolean>>;
   page: number;
+  timeout: number;
 }
 
-const MenuItem = ({ children, isActive, page, setPage }: Props) => {
+const MenuItem = ({
+  children,
+  timeout,
+  isActive,
+  setEffect,
+  page,
+  setPage,
+}: Props) => {
   return (
     <li className="block">
       <button
-        onClick={() => setPage(page)}
+        onClick={() => {
+          setEffect(true);
+          setTimeout(() => {
+            setPage(page);
+          }, timeout);
+        }}
         className={`${
           isActive ? "bg-gray100 text-gray10" : "hover:bg-gray20"
         } block text-right w-full p-4 transition-colors duration-500`}
@@ -65,9 +78,7 @@ export default function Home() {
     },
   ];
 
-  useEffect(() => {
-    setEffect(true);
-  }, [page]);
+  const timeout = 400;
 
   return (
     <>
@@ -91,6 +102,7 @@ export default function Home() {
                 page={index}
                 isActive={page === index}
                 setEffect={setEffect}
+                timeout={timeout}
               >
                 {pages.at(index)?.title}
               </MenuItem>
@@ -123,7 +135,7 @@ export default function Home() {
             size={132}
             className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
           />
-          <div className="relative w-full h-full overflow-hidden">
+          <div className="relative w-full h-full rounded-full overflow-hidden">
             <div
               style={{ transform: `rotate(${pages.at(page)?.deg}deg)` }}
               className={`transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
@@ -132,30 +144,50 @@ export default function Home() {
               <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[16px] border-r-[16px] border-yellow10"></div>
             </div>
             <button
-              onClick={() => setPage(0)}
+              onClick={() => {
+                setEffect(true);
+                setTimeout(() => {
+                  setPage(0);
+                }, timeout);
+              }}
               className="absolute right-0 top-0 w-1/2 h-1/2 rounded-tr-full"
             ></button>
             <button
-              onClick={() => setPage(1)}
+              onClick={() => {
+                setEffect(true);
+                setTimeout(() => {
+                  setPage(1);
+                }, timeout);
+              }}
               className="absolute right-0 bottom-0 w-1/2 h-1/2 rounded-br-full"
             ></button>
             <button
-              onClick={() => setPage(2)}
+              onClick={() => {
+                setEffect(true);
+                setTimeout(() => {
+                  setPage(2);
+                }, timeout);
+              }}
               className="absolute left-0 bottom-0 w-1/2 h-1/2 rounded-bl-full"
             ></button>
             <button
-              onClick={() => setPage(3)}
+              onClick={() => {
+                setEffect(true);
+                setTimeout(() => {
+                  setPage(3);
+                }, timeout);
+              }}
               className="absolute left-0 top-0 w-1/2 h-1/2 rounded-tl-full"
             ></button>
-            <h2
-              onAnimationEnd={() => setEffect(false)}
-              className={`${
-                effect ? "animate-fade" : ""
-              } absolute right-0 top-0 font-barbra text-[90px]`}
-            >
-              {pages.at(page)?.title}
-            </h2>
           </div>
+          <h2
+            onAnimationEnd={() => setEffect(false)}
+            className={`${
+              effect ? "animate-fade" : ""
+            } absolute right-0 top-0 font-barbra text-[90px]`}
+          >
+            {pages.at(page)?.title}
+          </h2>
         </section>
         <nav
           className={`transition duration-500 z-30 fixed left-0 top-0 right-0 bottom-0 ease-in-out bg-dark ${

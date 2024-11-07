@@ -23,12 +23,13 @@ const config: Config = {
       },
       keyframes: {
         fade: {
-          "0%": { opacity: "0", transform: "translate(10, 0)"},
-          "100%": { opacity: "100", transform: "translate(0, 0)" },
+          "0%": { opacity: "1", transform: "translate(0, 0)"},
+          "50%": { opacity: "0", transform: "translate(30, 0)"},
+          "100%": { opacity: "1", transform: "translate(0, 0)" },
         }
       },
       animation: {
-        fade: "fade 500ms ease-in-out",
+        fade: "fade 800ms ease-in-out",
       }
     },
   },
