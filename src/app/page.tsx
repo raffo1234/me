@@ -3,7 +3,6 @@
 import { GiHummingbird } from "react-icons/gi";
 import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { useState } from "react";
-import { MdClose } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
@@ -44,17 +43,8 @@ const MenuItem = ({
 };
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [effect, setEffect] = useState(false);
-
-  const openMenu = () => {
-    setIsMenuOpen(true);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
 
   const now = new Date();
   const currentYear = now.getFullYear();
@@ -82,124 +72,109 @@ export default function Home() {
 
   return (
     <>
-      <div className="absolute left-0 top-0 w-[250px]">
-        <header className="bg-yellow10 h-[500px] flex items-center justify-center leading-[4.5rem]">
-          <div>
-            <h1 className="tracking-wider text-[90px] font-druk mb-2">
-              RAFAEL <br /> MEZA
-            </h1>
-            <span className="block font-roboto text-sm tracking-tighter">
-              SOFTWARE ENGINEER
-            </span>
-          </div>
-        </header>
-        <nav className="w-full pt-10">
-          <ul className="block text-md leading-5 font-roboto">
-            {pages.map((_, index) => (
-              <MenuItem
-                key={index}
-                setPage={setPage}
-                page={index}
-                isActive={page === index}
-                setEffect={setEffect}
-                timeout={timeout}
+      <main>
+        <div className="flex items-center w-full">
+          <aside className="w-[20%] self-start flex-shrink-0">
+            <header className="bg-yellow10 h-[500px] flex items-center justify-center leading-[4.5rem]">
+              <div>
+                <h1 className="tracking-wider text-[90px] font-druk mb-2">
+                  RAFAEL <br /> MEZA
+                </h1>
+                <span className="block font-roboto text-sm tracking-tighter">
+                  SOFTWARE ENGINEER
+                </span>
+              </div>
+            </header>
+            <nav className="w-full pt-10">
+              <ul className="block text-md leading-5 font-roboto">
+                {pages.map((_, index) => (
+                  <MenuItem
+                    key={index}
+                    setPage={setPage}
+                    page={index}
+                    isActive={page === index}
+                    setEffect={setEffect}
+                    timeout={timeout}
+                  >
+                    {pages.at(index)?.title}
+                  </MenuItem>
+                ))}
+              </ul>
+            </nav>
+          </aside>
+          <div className="p-4 w-[50%]">
+            <section className="aspect-square border-2 p-4 border-gray20 w-full flex-1 rounded-full relative">
+              <GiHummingbird
+                size={132}
+                className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+              />
+              <div className="relative w-full h-full rounded-full overflow-hidden">
+                <div
+                  style={{ transform: `rotate(${pages.at(page)?.deg}deg)` }}
+                  className={`transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
+                >
+                  <div className="absolute left-0 top-0 w-full h-full rounded-full border-[16px] border-white"></div>
+                  <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[16px] border-r-[16px] border-yellow10"></div>
+                </div>
+                <button
+                  onClick={() => {
+                    setEffect(true);
+                    setTimeout(() => {
+                      setPage(0);
+                    }, timeout);
+                  }}
+                  className="absolute right-0 top-0 w-1/2 h-1/2 rounded-tr-full"
+                ></button>
+                <button
+                  onClick={() => {
+                    setEffect(true);
+                    setTimeout(() => {
+                      setPage(1);
+                    }, timeout);
+                  }}
+                  className="absolute right-0 bottom-0 w-1/2 h-1/2 rounded-br-full"
+                ></button>
+                <button
+                  onClick={() => {
+                    setEffect(true);
+                    setTimeout(() => {
+                      setPage(2);
+                    }, timeout);
+                  }}
+                  className="absolute left-0 bottom-0 w-1/2 h-1/2 rounded-bl-full"
+                ></button>
+                <button
+                  onClick={() => {
+                    setEffect(true);
+                    setTimeout(() => {
+                      setPage(3);
+                    }, timeout);
+                  }}
+                  className="absolute left-0 top-0 w-1/2 h-1/2 rounded-tl-full"
+                ></button>
+              </div>
+              <h2
+                onAnimationEnd={() => setEffect(false)}
+                className={`${
+                  effect ? "animate-fade" : ""
+                } absolute right-0 top-0 font-barbra text-[90px]`}
               >
-                {pages.at(index)?.title}
-              </MenuItem>
-            ))}
-          </ul>
-        </nav>
-      </div>
-      <button
-        onClick={openMenu}
-        title="Download Rafael Meza Resume | PDF"
-        className="bg-yellow10 px-8 py-5 text-[32px] space-x-5 items-center flex w-[300px] fixed right-0 top-1/2 -translate-y-1/2 z-20 font-druk tracking-wide"
-      >
-        <FaDownload size={28} color="white" />
-        <span className="underline">Download Resume</span>
-      </button>
-      <a
-        download
-        title="Download Rafael Meza Resume | PDF"
-        href="/pdfs/Rafael-Meza-Resume.pdf"
-        className="bg-yellow10 px-8 py-5 text-[32px] space-x-5 items-center flex w-[300px] fixed right-0 top-1/2 -translate-y-1/2 z-20 font-druk tracking-wide"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <FaDownload size={28} color="white" />
-        <span className="underline">Download Resume</span>
-      </a>
-      <main className="p-4">
-        <section className="relative m-auto border-2 p-4 border-gray20 w-[800px] h-[800px] rounded-full">
-          <GiHummingbird
-            size={132}
-            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
-          />
-          <div className="relative w-full h-full rounded-full overflow-hidden">
-            <div
-              style={{ transform: `rotate(${pages.at(page)?.deg}deg)` }}
-              className={`transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
-            >
-              <div className="absolute left-0 top-0 w-full h-full rounded-full border-[16px] border-white"></div>
-              <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[16px] border-r-[16px] border-yellow10"></div>
-            </div>
-            <button
-              onClick={() => {
-                setEffect(true);
-                setTimeout(() => {
-                  setPage(0);
-                }, timeout);
-              }}
-              className="absolute right-0 top-0 w-1/2 h-1/2 rounded-tr-full"
-            ></button>
-            <button
-              onClick={() => {
-                setEffect(true);
-                setTimeout(() => {
-                  setPage(1);
-                }, timeout);
-              }}
-              className="absolute right-0 bottom-0 w-1/2 h-1/2 rounded-br-full"
-            ></button>
-            <button
-              onClick={() => {
-                setEffect(true);
-                setTimeout(() => {
-                  setPage(2);
-                }, timeout);
-              }}
-              className="absolute left-0 bottom-0 w-1/2 h-1/2 rounded-bl-full"
-            ></button>
-            <button
-              onClick={() => {
-                setEffect(true);
-                setTimeout(() => {
-                  setPage(3);
-                }, timeout);
-              }}
-              className="absolute left-0 top-0 w-1/2 h-1/2 rounded-tl-full"
-            ></button>
+                {pages.at(page)?.title}
+              </h2>
+            </section>
           </div>
-          <h2
-            onAnimationEnd={() => setEffect(false)}
-            className={`${
-              effect ? "animate-fade" : ""
-            } absolute right-0 top-0 font-barbra text-[90px]`}
+          <a
+            download
+            title="Download Rafael Meza Resume | PDF"
+            href="/pdfs/Rafael-Meza-Resume.pdf"
+            className="bg-yellow10 flex-shrink-0 px-8 py-5 text-[32px] space-x-5 items-center flex w-[20%] font-druk tracking-wide"
+            target="_blank"
+            rel="noreferrer"
           >
-            {pages.at(page)?.title}
-          </h2>
-        </section>
-        <nav
-          className={`transition duration-500 z-30 fixed left-0 top-0 right-0 bottom-0 ease-in-out bg-dark ${
-            isMenuOpen
-              ? "opacity-100 translate-y-0 scale-100"
-              : "opacity-0 translate-y-full scale-95"
-          }`}
-        >
-          <button className="p-6 text-orange mx-auto block" onClick={closeMenu}>
-            <MdClose size={100} />
-          </button>
-        </nav>
+            <FaDownload size={28} color="white" />
+            <span className="underline">Download Resume</span>
+          </a>
+        </div>
         <footer className="absolute p-6 right-0 bottom-0">
           <div className="flex mb-2 space-x-3 justify-end">
             <a
