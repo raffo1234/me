@@ -9,13 +9,23 @@ export default function Portfolio({ page }: Props) {
     <div
       className={`${
         page === currentPage ? "opacity-100 scale-100" : "opacity-0 scale-75"
-      } transition duration-500 ease-in-out flex overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray20 bg-opacity-50 w-[60%] h-[60%]`}
+      } transition duration-500 ease-in-out flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray20 bg-opacity-50 w-[60%] h-[60%]`}
     >
-      <div className="flex justify-end w-1/2 shrink-0">
+      <button className="absolute -left-[52px] group top-1/2 -translate-y-1/2 flex space-x-[3px] items-center rounded-l-[20] p-4">
+        <div className="w-2 h-6 border-l-8 rounded-l-full group-hover:border-yellow10 border-gray100 transition-colors duration-500"></div>
+        <div className="w-2 h-10 border-l-8 rounded-l-full group-hover:border-yellow10 border-gray100 transition-colors duration-500"></div>
+        <div className="w-2 h-14 border-l-8 rounded-l-full group-hover:border-yellow10 border-gray100 transition-colors duration-500"></div>
+      </button>
+      <button className="absolute -right-[52px] group top-1/2 -translate-y-1/2 flex space-x-[3px] items-center rounded-l-[20] p-4">
+        <div className="w-2 h-14 border-l-8 rounded-r-full group-hover:border-yellow10 border-gray100 transition-colors duration-500"></div>
+        <div className="w-2 h-10 border-l-8 rounded-r-full group-hover:border-yellow10 border-gray100 transition-colors duration-500"></div>
+        <div className="w-2 h-6 border-l-8 rounded-r-full group-hover:border-yellow10 border-gray100 transition-colors duration-500"></div>
+      </button>
+      <div className="flex justify-end w-1/2 shrink-0 rounded-l-full bg-gray100">
         <p
           className={`${
             page === currentPage ? "opacity-100" : "opacity-50"
-          } transition text-right leading-[4.5rem] h-full items-center flex justify-end pr-6 tracking-wider text-[90px] font-druk mb-2 w-full shrink-0 bg-gray100 duration-500 ease-in-out delay-200 text-yellow10`}
+          } transition text-right leading-[4.5rem] h-full items-center flex justify-end pr-6 tracking-wider text-[90px] font-druk mb-2 w-full shrink-0 duration-500 ease-in-out delay-200 text-yellow10`}
         >
           RAFAEL <br />
           MEZA
