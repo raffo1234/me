@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FaDownload } from "react-icons/fa";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import About from "./components/about";
+import Portfolio from "./components/portfolio";
 
 interface Props {
   children?: ReactNode;
@@ -108,7 +109,9 @@ export default function Home() {
               <GiHummingbird
                 size={132}
                 className={`${
-                  page === 1 ? "scale-50 opacity-0" : "scale-100 opacity-100"
+                  page === 1 || page === 2
+                    ? "scale-50 opacity-0"
+                    : "scale-100 opacity-100"
                 } transition duration-500 ease-in-out absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2`}
               />
               <div className="relative w-full h-full rounded-full overflow-hidden">
@@ -157,6 +160,7 @@ export default function Home() {
                 ></button>
               </div>
               <About page={page} />
+              <Portfolio page={page} />
               <h2
                 onAnimationEnd={() => setEffect(false)}
                 className={`${
