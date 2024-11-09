@@ -75,9 +75,9 @@ export default function Home() {
       <main>
         <div className="flex items-center w-full">
           <aside className="w-[20%] self-start flex-shrink-0">
-            <header className="bg-yellow10 h-[500px] flex items-center justify-center leading-[4.5rem]">
+            <header className="bg-yellow10 h-[500px] flex items-center justify-center">
               <div>
-                <h1 className="tracking-wider text-[90px] font-druk mb-2">
+                <h1 className="tracking-wider text-[90px] font-druk mb-2 leading-[4.5rem]">
                   RAFAEL <br /> MEZA
                 </h1>
                 <span className="block font-roboto text-sm tracking-tighter">
@@ -106,12 +106,14 @@ export default function Home() {
             <section className="aspect-square border-2 p-4 border-gray20 w-full flex-1 rounded-full relative">
               <GiHummingbird
                 size={132}
-                className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+                className={`${
+                  page === 1 ? "scale-50 opacity-0" : "scale-100 opacity-100"
+                } transition duration-500 ease-in-out absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2`}
               />
               <div className="relative w-full h-full rounded-full overflow-hidden">
                 <div
                   style={{ transform: `rotate(${pages.at(page)?.deg}deg)` }}
-                  className={`transition-transform duration-500 ease-in-out className w-full h-full rounded-full flex items-center justify-center absolute`}
+                  className={`transition-transform duration-500 ease-in-out w-full h-full rounded-full flex items-center justify-center absolute`}
                 >
                   <div className="absolute left-0 top-0 w-full h-full rounded-full border-[16px] border-white"></div>
                   <div className="absolute left-1/2 top-0 w-1/2 h-1/2 rounded-tr-full border-t-[16px] border-r-[16px] border-yellow10"></div>
@@ -152,6 +154,47 @@ export default function Home() {
                   }}
                   className="absolute left-0 top-0 w-1/2 h-1/2 rounded-tl-full"
                 ></button>
+              </div>
+              <div
+                className={`${
+                  page === 1 ? "opacity-100 scale-100" : "opacity-0 scale-75"
+                } transition duration-500 ease-in-out flex overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray20 bg-opacity-50 w-[60%] h-[60%]`}
+              >
+                <div className="flex justify-end w-1/2 shrink-0">
+                  <p
+                    className={`${
+                      page === 1 ? "opacity-100" : "opacity-50"
+                    } transition text-right leading-[4.5rem] h-full items-center flex justify-end pr-6 tracking-wider text-[90px] font-druk mb-2 w-full shrink-0 bg-gray100 duration-500 ease-in-out delay-200 text-yellow10`}
+                  >
+                    RAFAEL <br />
+                    MEZA
+                  </p>
+                </div>
+                <div className="px-8 flex justify-center items-center">
+                  <div>
+                    <p
+                      className={`${
+                        page === 1
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-10 opacity-50"
+                      } transition mb-4 duration-500 ease-in-out delay-200 text-gray100`}
+                    >
+                      Known for delivering efficient, high-quality solutions and
+                      collaborating effectively with cross-functional teams.
+                    </p>
+                    <p
+                      className={`${
+                        page === 1
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-10 opacity-50"
+                      } transition duration-500 ease-in-out delay-200 text-gray100`}
+                    >
+                      Highly proficient in ReactJS, HTML5, CSS3, and adept at
+                      developing reusable code and optimizing UI/UX design
+                      feasibility.
+                    </p>
+                  </div>
+                </div>
               </div>
               <h2
                 onAnimationEnd={() => setEffect(false)}
