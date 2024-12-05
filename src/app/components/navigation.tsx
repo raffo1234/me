@@ -38,13 +38,13 @@ const MenuItem = ({ children, title, slug }: Props) => {
   const pathname = usePathname();
 
   return (
-    <li className="flex-1 h-full">
+    <li className="flex-1 md:h-full">
       <Link
         href={slug}
         title={title}
         className={`
           ${pathname === slug ? "bg-gray100 text-gray10" : "hover:bg-gray20"}
-          font-druk flex items-center justify-center uppercase tracking-wider text-[80px] w-full p-4 h-full text-center transition-colors duration-500`}
+          font-druk flex items-center justify-center uppercase tracking-wider text-[50px] md:text-[80px] w-full p-4 md:h-full text-center transition-colors duration-500`}
       >
         {children}
       </Link>
@@ -66,13 +66,7 @@ export default function Navigation() {
         } w-full fixed top-0 z-20 h-full transition duration-350 ease-in-out left-0 bg-white`}
       >
         <div className="relative h-full">
-          <div className="mb-10 absolute left-10 top-10">
-            <h2 className="font-druk text-[60px] leading-[3.1rem] tracking-wider mb-0">
-              RAFAEL <br /> MEZA
-            </h2>
-            <p className="text-sm tracking-tighter">FRONTEND DEVELOPER</p>
-          </div>
-          <ul className="text-md h-full leading-5 font-roboto w-full flex items-center">
+          <ul className="justify-stretch text-md h-full leading-[4.5rem] w-full md:flex items-center md:flex-row flex-col">
             {pages.map(({ slug, title }, index) => (
               <MenuItem title={title} key={index} page={slug} slug={slug}>
                 {pages.at(index)?.title}
