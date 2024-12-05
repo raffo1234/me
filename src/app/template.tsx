@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
+import Aside from "./components/aside";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -12,7 +13,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <>
       <AnimatePresence mode="wait">
         <motion.div key={pathname}>
+          <Aside />
           <Navigation />
+
           <Footer />
           {children}
           <motion.div

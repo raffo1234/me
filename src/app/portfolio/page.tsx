@@ -6,7 +6,10 @@ export default function Portfolio() {
   return (
     <main className="pl-[350px] h-[100vh]">
       <section className="relative mb-10 h-full flex justify-center">
-        <div className="items-center max-w-[1024px] w-full h-full flex justify-start py-6">
+        <figure className="absolute right-0 top-1/2 -translate-y-1/2 z-0">
+          <img src="images/tiger.png" alt="Rafael Meza" />
+        </figure>
+        <div className="relative z-10 items-center max-w-[1024px] w-full h-full flex justify-start py-6">
           <div>
             <h2 className="max-w-[360px] mb-20 leading-[5rem] font-druk text-[100px] tracking-wider">
               TIGER LATIN AMERICA
@@ -19,12 +22,12 @@ export default function Portfolio() {
             </BulletList>
           </div>
         </div>
-        <figure className="absolute right-0 top-1/2 -translate-y-1/2">
-          <img src="images/tiger.png" alt="Rafael Meza" />
-        </figure>
       </section>
       <section className="relative mb-10 h-full flex justify-center">
-        <div className="items-center max-w-[1024px] w-full h-full flex justify-start py-6">
+        <figure className="absolute right-0 top-1/2 -translate-y-1/2 z-0">
+          <img src="images/tiger.png" alt="Rafael Meza" />
+        </figure>
+        <div className="relative z-10 items-center max-w-[1024px] w-full h-full flex justify-start py-6">
           <div>
             <h2 className="max-w-[360px] mb-20 leading-[5rem] font-druk text-[100px] tracking-wider">
               TIGER LATIN AMERICA
@@ -37,9 +40,6 @@ export default function Portfolio() {
             </BulletList>
           </div>
         </div>
-        <figure className="absolute right-0 top-1/2 -translate-y-1/2">
-          <img src="images/tiger.png" alt="Rafael Meza" />
-        </figure>
       </section>
     </main>
   );

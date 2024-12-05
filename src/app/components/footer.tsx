@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = now.getFullYear();
 
   return (
-    <footer className="absolute p-6 right-0 bottom-0">
+    <footer className="fixed p-6 right-0 bottom-0">
       <div className="flex mb-2 space-x-3 justify-end">
         <a
           href="https://www.linkedin.com/in/rafael-meza-280602123/"
