@@ -15,7 +15,7 @@ interface Props {
 
 const MenuItem = ({ children, timeout, isActive, page, setPage }: Props) => {
   return (
-    <li className="block">
+    <li className="flex-1 h-full">
       <button
         onClick={() => {
           setTimeout(() => {
@@ -24,7 +24,7 @@ const MenuItem = ({ children, timeout, isActive, page, setPage }: Props) => {
         }}
         className={`${
           isActive ? "bg-gray100 text-gray10" : "hover:bg-gray20"
-        } block text-right w-full p-4 transition-colors duration-500`}
+        } font-druk uppercase tracking-wider text-[80px] w-full p-4 h-full text-center transition-colors duration-500`}
       >
         {children}
       </button>
@@ -69,28 +69,45 @@ export default function Home() {
               event.currentTarget.classList.add("invisible");
             }
           }}
+          style={{
+            backgroundImage:
+              "linear-gradient(120deg, #FFD301 0%, #fda085 100%);",
+          }}
           className={`${
             isOpenMenu ? "opacity-100" : "opacity-0"
-          } w-full h-full transition duration-500 ease-in-out absolute top-0 left-0 bg-white flex items-center justify-center`}
+          } w-full h-full transition duration-500 ease-in-out absolute top-0 left-0 bg-white`}
         >
-          <ul className="block text-md leading-5 font-roboto">
-            {pages.map((_, index) => (
-              <MenuItem
-                key={index}
-                setPage={setPage}
-                page={index}
-                isActive={page === index}
-                timeout={timeout}
-              >
-                {pages.at(index)?.title}
-              </MenuItem>
-            ))}
-          </ul>
+          <div className="relative h-full">
+            <div className="mb-10 absolute left-10 top-10">
+              <h2 className="font-druk text-[60px] leading-[3.1rem] tracking-wider mb-0">
+                RAFAEL <br /> MEZA
+              </h2>
+              <p className="text-sm tracking-tighter">FRONTEND DEVELOPER</p>
+            </div>
+            <ul className="text-md h-full leading-5 font-roboto w-full flex items-center">
+              {pages.map((_, index) => (
+                <MenuItem
+                  key={index}
+                  setPage={setPage}
+                  page={index}
+                  isActive={page === index}
+                  timeout={timeout}
+                >
+                  {pages.at(index)?.title}
+                </MenuItem>
+              ))}
+            </ul>
+          </div>
         </nav>
-
         <div className="flex items-center w-full">
-          <aside className="w-[350px] self-start flex-shrink-0">
-            <header className="bg-yellow10 h-[500px] flex items-center justify-center">
+          <aside
+            style={{
+              backgroundImage:
+                "linear-gradient(120deg, #FFD301 0%, #fda085 100%);",
+            }}
+            className="w-[350px] self-start flex-shrink-0"
+          >
+            <header className="h-[500px] flex items-center justify-center">
               <div>
                 <h1 className="tracking-wider text-[90px] font-druk mb-2 leading-[4.5rem]">
                   RAFAEL <br /> MEZA
@@ -100,11 +117,12 @@ export default function Home() {
                 </span>
               </div>
             </header>
+            <div className="h-4 w-full bg-gray10"></div>
             <a
               download
               title="Download Rafael Meza Resume | PDF"
               href="/pdfs/Rafael-Meza-Resume.pdf"
-              className="transition-all ring-opacity-30 focus:ring-4 duration-200 ring-0 ring-gray-300 hover:ring-8 bg-yellow10 mt-4 px-8 py-5 text-[32px] space-x-5 items-center flex font-druk tracking-wide justify-center"
+              className="transition-all ring-opacity-30 focus:ring-4 duration-200 ring-0 ring-gray-300 hover:ring-8 px-8 py-5 text-[32px] space-x-5 items-center flex font-druk tracking-wide justify-center"
               target="_blank"
               rel="noreferrer"
             >
