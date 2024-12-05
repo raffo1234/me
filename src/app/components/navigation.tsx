@@ -56,16 +56,11 @@ export default function Navigation() {
   return (
     <>
       <nav
-        onTransitionEnd={(event) => {
-          if (!isOpenMenu) {
-            event.currentTarget.classList.add("invisible");
-          }
-        }}
         style={{
           backgroundImage: "linear-gradient(120deg, #FFD301 0%, #fda085 100%)",
         }}
         className={`${
-          isOpenMenu ? "opacity-100" : "opacity-0"
+          isOpenMenu ? "opacity-100" : "opacity-0 invisible"
         } w-full fixed top-0 z-20 h-full transition duration-350 ease-in-out left-0 bg-white`}
       >
         <div className="relative h-full">
