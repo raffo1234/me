@@ -15,7 +15,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
         <motion.div key={pathname}>
           <Aside />
           <Navigation />
-
           <Footer />
           {children}
           <motion.div
