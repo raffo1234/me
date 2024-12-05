@@ -7,6 +7,7 @@ import ListStar from "../components/listStar";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import Link from "next/link";
 import { RiExternalLinkLine } from "react-icons/ri";
+import Title from "../components/Title";
 
 const PortfolioSection = ({
   imageSrc,
@@ -23,10 +24,8 @@ const PortfolioSection = ({
         <Image src={imageSrc} alt={title} layout="fill" objectFit="contain" />
       </figure>
       <div className="relative items-center max-w-[1024px] w-full h-full flex justify-start py-6">
-        <div>
-          <h2 className="max-w-[360px] uppercase mb-20 leading-[5rem] font-druk text-[100px] tracking-wider">
-            {title}
-          </h2>
+        <div className="max-w-[360px]">
+          <Title>{title}</Title>
           {children}
         </div>
       </div>
@@ -125,7 +124,6 @@ export default function PortfolioPage() {
           </PortfolioSection>
         );
       })}
-
       <div className="animate-bounce fixed bottom-10 left-1/2 -translate-x-1/2">
         <IoIosArrowRoundDown className="text-yellow10" size={80} />
       </div>
