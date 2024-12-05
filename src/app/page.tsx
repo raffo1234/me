@@ -1,35 +1,23 @@
 "use client";
 
-import { GiHummingbird } from "react-icons/gi";
 import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { useState } from "react";
 import { FaDownload } from "react-icons/fa";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
-import About from "./components/about";
-import Portfolio from "./components/portfolio";
 
 interface Props {
   children?: ReactNode;
   isActive?: boolean;
   setPage: Dispatch<SetStateAction<number>>;
-  setEffect: Dispatch<SetStateAction<boolean>>;
   page: number;
   timeout: number;
 }
 
-const MenuItem = ({
-  children,
-  timeout,
-  isActive,
-  setEffect,
-  page,
-  setPage,
-}: Props) => {
+const MenuItem = ({ children, timeout, isActive, page, setPage }: Props) => {
   return (
     <li className="block">
       <button
         onClick={() => {
-          setEffect(true);
           setTimeout(() => {
             setPage(page);
           }, timeout);
@@ -46,7 +34,7 @@ const MenuItem = ({
 
 export default function Home() {
   const [page, setPage] = useState(0);
-  const [effect, setEffect] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const now = new Date();
   const currentYear = now.getFullYear();
@@ -70,13 +58,38 @@ export default function Home() {
     },
   ];
 
-  const timeout = 400;
+  const timeout = 500;
 
   return (
     <>
       <main>
+        <nav
+          onTransitionEnd={(event) => {
+            if (!isOpenMenu) {
+              event.currentTarget.classList.add("invisible");
+            }
+          }}
+          className={`${
+            isOpenMenu ? "opacity-100" : "opacity-0"
+          } w-full h-full transition duration-500 ease-in-out absolute top-0 left-0 bg-white flex items-center justify-center`}
+        >
+          <ul className="block text-md leading-5 font-roboto">
+            {pages.map((_, index) => (
+              <MenuItem
+                key={index}
+                setPage={setPage}
+                page={index}
+                isActive={page === index}
+                timeout={timeout}
+              >
+                {pages.at(index)?.title}
+              </MenuItem>
+            ))}
+          </ul>
+        </nav>
+
         <div className="flex items-center w-full">
-          <aside className="w-[20%] self-start flex-shrink-0">
+          <aside className="w-[350px] self-start flex-shrink-0">
             <header className="bg-yellow10 h-[500px] flex items-center justify-center">
               <div>
                 <h1 className="tracking-wider text-[90px] font-druk mb-2 leading-[4.5rem]">
@@ -87,24 +100,19 @@ export default function Home() {
                 </span>
               </div>
             </header>
-            <nav className="w-full pt-10">
-              <ul className="block text-md leading-5 font-roboto">
-                {pages.map((_, index) => (
-                  <MenuItem
-                    key={index}
-                    setPage={setPage}
-                    page={index}
-                    isActive={page === index}
-                    setEffect={setEffect}
-                    timeout={timeout}
-                  >
-                    {pages.at(index)?.title}
-                  </MenuItem>
-                ))}
-              </ul>
-            </nav>
+            <a
+              download
+              title="Download Rafael Meza Resume | PDF"
+              href="/pdfs/Rafael-Meza-Resume.pdf"
+              className="bg-yellow10 mt-4 px-8 py-5 text-[32px] space-x-5 items-center flex font-druk tracking-wide justify-center"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaDownload size={28} color="white" />
+              <span className="underline">Download Resume</span>
+            </a>
           </aside>
-          <div className="p-4 w-[50%]">
+          {/* <div className="p-4 w-[50%]">
             <section className="aspect-square border-2 p-4 border-gray20 w-full flex-1 rounded-full relative">
               <GiHummingbird
                 size={132}
@@ -170,19 +178,30 @@ export default function Home() {
                 {pages.at(page)?.title}
               </h2>
             </section>
-          </div>
-          <a
-            download
-            title="Download Rafael Meza Resume | PDF"
-            href="/pdfs/Rafael-Meza-Resume.pdf"
-            className="bg-yellow10 flex-shrink-0 px-8 py-5 text-[32px] space-x-5 items-center flex w-[20%] font-druk tracking-wide"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaDownload size={28} color="white" />
-            <span className="underline">Download Resume</span>
-          </a>
+          </div> */}
         </div>
+        <button
+          onClick={() =>
+            setIsOpenMenu((prev) => {
+              return !prev;
+
+              // return !prev;
+            })
+          }
+          className="absolute group top-10 right-10"
+        >
+          <div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all bg-gray100 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+            <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+              <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
+              <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
+              <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
+              <div className="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
+                <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
+                <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+              </div>
+            </div>
+          </div>
+        </button>
         <footer className="absolute p-6 right-0 bottom-0">
           <div className="flex mb-2 space-x-3 justify-end">
             <a
