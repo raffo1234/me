@@ -12,7 +12,7 @@ export default function Aside() {
       <header className="h-[500px] flex items-center justify-center">
         <div>
           <h1 className="tracking-wider text-[90px] font-druk mb-2 leading-[4.5rem]">
-            <Link href="/">
+            <Link href="/" title="Rafael Meza">
               RAFAEL <br /> MEZA
             </Link>
           </h1>

@@ -1,14 +1,8 @@
-"use client";
+import BulletList from "../components/bulletList";
+import UnderlinedLink from "../components/link";
+import ListStart from "../components/listStar";
 
-import React from "react";
-import BulletList from "./components/bulletList";
-import ListStart from "./components/listStar";
-import UnderlinedLink from "./components/link";
-import { FaDownload } from "react-icons/fa";
-import { IoIosGitNetwork } from "react-icons/io";
-import Link from "next/link";
-
-export default function Home() {
+export default function ContactPage() {
   return (
     <main className="pl-[350px] h-[100vh]">
       <section className="p-20 w-full h-full flex justify-center items-center">
@@ -50,18 +44,6 @@ export default function Home() {
               </div>
             </ListStart>
           </BulletList>
-          <Link
-            style={{
-              backgroundImage:
-                "linear-gradient(120deg, #FFD301 0%, #fda085 100%)",
-            }}
-            title="Portfolio | Rafael Meza"
-            href="/portfolio"
-            className="transition-all mt-10 ring-opacity-30 focus:ring-4 duration-200 ring-0 ring-gray-300 hover:ring-8 px-8 py-5 text-[32px] space-x-5 items-center flex font-druk tracking-wide justify-center"
-          >
-            <IoIosGitNetwork size={28} color="white" />
-            <span className="underline">View Work</span>
-          </Link>
         </div>
       </section>
     </main>

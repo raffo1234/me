@@ -31,15 +31,17 @@ interface Props {
   children?: ReactNode;
   page: string;
   slug: string;
+  title: string;
 }
 
-const MenuItem = ({ children, slug }: Props) => {
+const MenuItem = ({ children, title, slug }: Props) => {
   const pathname = usePathname();
 
   return (
     <li className="flex-1 h-full">
       <Link
         href={slug}
+        title={title}
         className={`
           ${pathname === slug ? "bg-gray100 text-gray10" : "hover:bg-gray20"}
           font-druk flex items-center justify-center uppercase tracking-wider text-[80px] w-full p-4 h-full text-center transition-colors duration-500`}
@@ -71,8 +73,8 @@ export default function Navigation() {
             <p className="text-sm tracking-tighter">FRONTEND DEVELOPER</p>
           </div>
           <ul className="text-md h-full leading-5 font-roboto w-full flex items-center">
-            {pages.map(({ slug }, index) => (
-              <MenuItem key={index} page={slug} slug={slug}>
+            {pages.map(({ slug, title }, index) => (
+              <MenuItem title={title} key={index} page={slug} slug={slug}>
                 {pages.at(index)?.title}
               </MenuItem>
             ))}
@@ -83,6 +85,7 @@ export default function Navigation() {
       <button
         onClick={() => setIsOpenMenu((prev) => !prev)}
         className="fixed group top-10 right-10 z-20"
+        title="Menu Navigation"
       >
         <div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all bg-gray100 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
           <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
