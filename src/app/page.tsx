@@ -104,7 +104,7 @@ export default function Home() {
               download
               title="Download Rafael Meza Resume | PDF"
               href="/pdfs/Rafael-Meza-Resume.pdf"
-              className="bg-yellow10 mt-4 px-8 py-5 text-[32px] space-x-5 items-center flex font-druk tracking-wide justify-center"
+              className="transition-all ring-opacity-30 focus:ring-4 duration-200 ring-0 ring-gray-300 hover:ring-8 bg-yellow10 mt-4 px-8 py-5 text-[32px] space-x-5 items-center flex font-druk tracking-wide justify-center"
               target="_blank"
               rel="noreferrer"
             >
@@ -192,12 +192,36 @@ export default function Home() {
         >
           <div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all bg-gray100 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
             <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-              <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
-              <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
-              <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
-              <div className="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
-                <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
-                <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+              <div
+                className={`${
+                  isOpenMenu ? "translate-x-10" : ""
+                } bg-white h-[2px] w-7 transform transition-all duration-300 origin-left`}
+              ></div>
+              <div
+                className={`${
+                  isOpenMenu ? "translate-x-10" : ""
+                } bg-white h-[2px] w-7 rounded transform transition-all duration-300 delay-75`}
+              ></div>
+              <div
+                className={`${
+                  isOpenMenu ? "translate-x-10" : ""
+                } bg-white h-[2px] w-7 transform transition-all duration-300 origin-left delay-150`}
+              ></div>
+              <div
+                className={`${
+                  isOpenMenu ? "translate-x-0 w-12" : ""
+                } absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 flex w-0`}
+              >
+                <div
+                  className={`${
+                    isOpenMenu ? "rotate-45" : ""
+                  } absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300`}
+                ></div>
+                <div
+                  className={`${
+                    isOpenMenu ? "-rotate-45" : ""
+                  } absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300`}
+                ></div>
               </div>
             </div>
           </div>
