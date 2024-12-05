@@ -5,7 +5,7 @@ import Title from "../components/Title";
 
 export default function ContactPage() {
   return (
-    <main className="lg:pl-[350px] md:pl-[250px] h-[100vh]">
+    <main className="lg:pl-[350px] md:pl-[250px] md:h-[100vh] py-[100px] md:pt-0">
       <section className="p-4 md:p-20 w-full h-full flex justify-center items-center">
         <div>
           <Title>SAY HELLO!</Title>

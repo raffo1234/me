@@ -7,7 +7,7 @@ export default function Aside() {
       style={{
         backgroundImage: "linear-gradient(120deg, #FFD301 0%, #fda085 100%)",
       }}
-      className="fixed z-20 top-0 left-0 w-full pt-5 lg:w-[350px] md:w-[250px] self-start flex-shrink-0"
+      className="fixed z-30 top-0 left-0 w-full pt-5 lg:w-[350px] md:w-[250px] self-start flex-shrink-0"
     >
       <header className="px-10 pb-5 md:h-[500px] flex items-center justify-center">
         <div>

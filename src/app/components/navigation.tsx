@@ -63,7 +63,7 @@ export default function Navigation() {
         }}
         className={`${
           isOpenMenu ? "opacity-100" : "opacity-0 invisible"
-        } w-full fixed top-0 z-20 h-full transition duration-350 ease-in-out left-0 bg-white`}
+        } w-full fixed top-0 z-40 h-full transition duration-350 ease-in-out left-0 bg-white`}
       >
         <div className="relative h-full">
           <ul className="justify-stretch text-md h-full leading-[4.5rem] w-full md:flex items-center md:flex-row flex-col">
@@ -78,7 +78,7 @@ export default function Navigation() {
       <div className="flex items-center w-full"></div>
       <button
         onClick={() => setIsOpenMenu((prev) => !prev)}
-        className="fixed group top-6 right-6 md:top-10 md:right-10 z-20"
+        className="fixed group top-6 right-6 md:top-10 md:right-10 z-50"
         title="Menu Navigation"
       >
         <div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all bg-gray100 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">

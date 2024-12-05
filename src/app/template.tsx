@@ -14,8 +14,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
       <AnimatePresence mode="wait">
         <motion.div key={pathname}>
           <Aside />
-          <Navigation />
-          <Footer />
           {children}
           <motion.div
             style={{
@@ -27,6 +25,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
             transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute w-[100%] h-[100%] left-0 top-0 bg-slate-600"
           ></motion.div>
+          <Navigation />
+          <Footer />
         </motion.div>
       </AnimatePresence>
     </div>

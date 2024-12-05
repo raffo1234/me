@@ -19,15 +19,20 @@ const PortfolioSection = ({
   children: ReactNode;
 }) => {
   return (
-    <section className="relative px-6 mb-10 h-full flex justify-center">
-      <figure className="absolute w-full h-full right-0 top-1/2 -translate-y-1/2">
-        <Image src={imageSrc} alt={title} layout="fill" objectFit="contain" />
+    <section className="px-6 py-[50px] justify-center lg:min-h-[100vh] lg:flex items-center">
+      <figure className="relative w-full block">
+        <Title>{title}</Title>
+        <Image
+          src={imageSrc}
+          alt={title}
+          layout="responsive"
+          objectFit="contain"
+          width={100}
+          height={100}
+        />
       </figure>
-      <div className="relative items-center max-w-[1024px] w-full h-full flex justify-start py-6">
-        <div className="max-w-[360px]">
-          <Title>{title}</Title>
-          {children}
-        </div>
+      <div className="relative z-20 lg:h-[100vh] items-center max-w-[1024px] flex justify-start py-6">
+        <div className="max-w-[360px]">{children}</div>
       </div>
     </section>
   );
@@ -36,56 +41,56 @@ const PortfolioSection = ({
 const projects = [
   {
     title: "TIGER LATIN AMERICA",
-    imageSrc: "/images/tiger.png",
+    imageSrc: "/images/tiger_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/tiger/index.html",
   },
   {
     title: "Sunat Renta 2014",
-    imageSrc: "/images/renta-2014.png",
+    imageSrc: "/images/renta-2014_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/sunat_2015/index.html",
   },
   {
     title: "Golden Palace",
-    imageSrc: "/images/goldenpalace.png",
+    imageSrc: "/images/goldenpalace_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/goldenpalace/index.html",
   },
   {
     title: "Laive",
-    imageSrc: "/images/laive.png",
+    imageSrc: "/images/laive_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/laive/index.html",
   },
   {
     title: "A La Cancino",
-    imageSrc: "/images/cancino.png",
+    imageSrc: "/images/cancino_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/cancino/index.html",
   },
   {
     title: "Grupon",
-    imageSrc: "/images/grupon.png",
+    imageSrc: "/images/grupon_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/",
   },
   {
     title: "Travelmax",
-    imageSrc: "/images/travelmax.png",
+    imageSrc: "/images/travelmax_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/travelmax/index.html",
   },
   {
     title: "Yachay",
-    imageSrc: "/images/yachay.png",
+    imageSrc: "/images/yachay_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/",
   },
   {
     title: "Dashboard Yachay",
-    imageSrc: "/images/dashboard-yachay.png",
-    features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
+    imageSrc: "/images/dashboard-yachay_small.png",
+    features: ["Frontend Development", "Node, HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/",
   },
 ];
@@ -110,7 +115,7 @@ const ProjectButton = ({ href, title }: { href: string; title: string }) => {
 
 export default function PortfolioPage() {
   return (
-    <main className="lg:pl-[350px] md:pl-[250px] h-[100vh]">
+    <main className="lg:pl-[350px] md:pl-[250px] lg:h-[100vh] py-[100px] md:pt-0">
       {projects.map(({ title, href, imageSrc, features }, index) => {
         return (
           <PortfolioSection key={index} title={title} imageSrc={imageSrc}>
