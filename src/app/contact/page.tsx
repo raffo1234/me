@@ -4,8 +4,8 @@ import ListStart from "../components/listStar";
 
 export default function ContactPage() {
   return (
-    <main className="pl-[350px] h-[100vh]">
-      <section className="p-20 w-full h-full flex justify-center items-center">
+    <main className="lg:pl-[350px] md:pl-[250px] h-[100vh]">
+      <section className="p-4 md:p-20 w-full h-full flex justify-center items-center">
         <div>
           <h2 className="font-druk text-[90px] tracking-wider">SAY HELLO!</h2>
           <h3 className="font-bold mb-10">I am accepting freelance jobs.</h3>

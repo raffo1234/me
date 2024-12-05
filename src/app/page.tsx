@@ -4,13 +4,12 @@ import React from "react";
 import BulletList from "./components/bulletList";
 import ListStart from "./components/listStar";
 import UnderlinedLink from "./components/link";
-import { FaDownload } from "react-icons/fa";
 import { IoIosGitNetwork } from "react-icons/io";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="pl-[350px] h-[100vh]">
+    <main className="lg:pl-[350px] md:pl-[250px] h-[100vh]">
       <section className="p-20 w-full h-full flex justify-center items-center">
         <div>
           <h2 className="font-druk text-[90px] tracking-wider">SAY HELLO!</h2>

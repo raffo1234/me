@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import BulletList from "../components/bulletList";
 import ListStar from "../components/listStar";
-import { IoIosArrowRoundDown, IoIosGitNetwork } from "react-icons/io";
+import { IoIosArrowRoundDown } from "react-icons/io";
 import Link from "next/link";
 import { RiExternalLinkLine } from "react-icons/ri";
 
@@ -18,7 +18,7 @@ const PortfolioSection = ({
   children: ReactNode;
 }) => {
   return (
-    <section className="relative mb-10 h-full flex justify-center">
+    <section className="relative px-6 mb-10 h-full flex justify-center">
       <figure className="absolute w-full h-full right-0 top-1/2 -translate-y-1/2">
         <Image src={imageSrc} alt={title} layout="fill" objectFit="contain" />
       </figure>
@@ -111,7 +111,7 @@ const ProjectButton = ({ href, title }: { href: string; title: string }) => {
 
 export default function PortfolioPage() {
   return (
-    <main className="pl-[350px] h-[100vh]">
+    <main className="lg:pl-[350px] md:pl-[250px] h-[100vh]">
       {projects.map(({ title, href, imageSrc, features }, index) => {
         return (
           <PortfolioSection key={index} title={title} imageSrc={imageSrc}>

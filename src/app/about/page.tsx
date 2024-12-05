@@ -5,8 +5,8 @@ import ListStart from "../components/listStar";
 
 export default function AboutPage() {
   return (
-    <main className="pl-[350px] h-[100vh] flex justify-center items-center">
-      <div className="p-20">
+    <main className="lg:pl-[350px] md:pl-[250px] h-[100vh] flex justify-center items-center">
+      <div className="p-4 md:p-20">
         <BulletList>
           <h2 className="text-xl mb-3 font-bold">Rafael Meza</h2>
           <ul>

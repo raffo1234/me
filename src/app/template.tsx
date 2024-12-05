@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   return (
-    <>
+    <div className="pt-[30px] md:pt-0">
       <AnimatePresence mode="wait">
         <motion.div key={pathname}>
           <Aside />
@@ -29,6 +29,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
           ></motion.div>
         </motion.div>
       </AnimatePresence>
-    </>
+    </div>
   );
 }

@@ -84,7 +84,7 @@ export default function Navigation() {
       <div className="flex items-center w-full"></div>
       <button
         onClick={() => setIsOpenMenu((prev) => !prev)}
-        className="fixed group top-10 right-10 z-20"
+        className="fixed group top-6 right-6 md:top-10 md:right-10 z-20"
         title="Menu Navigation"
       >
         <div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all bg-gray100 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
