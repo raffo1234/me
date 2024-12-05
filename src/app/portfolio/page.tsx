@@ -19,7 +19,7 @@ const PortfolioSection = ({
   children: ReactNode;
 }) => {
   return (
-    <section className="px-6 py-[50px] justify-center lg:min-h-[100vh] lg:flex items-center">
+    <section className="px-6 py-[50px] justify-center lg:h-[100vh] lg:flex items-center">
       <figure className="relative w-full block">
         <Title>{title}</Title>
         <Image
@@ -129,7 +129,7 @@ export default function PortfolioPage() {
           </PortfolioSection>
         );
       })}
-      <div className="animate-bounce fixed bottom-10 left-1/2 -translate-x-1/2">
+      <div className="animate-bounce lg:visible invisible fixed bottom-10 left-1/2 -translate-x-1/2">
         <IoIosArrowRoundDown className="text-yellow10" size={80} />
       </div>
     </main>
