@@ -11,9 +11,12 @@ export default function Aside() {
     >
       <header className="px-10 pb-5 md:h-[500px] flex items-center justify-center">
         <div>
-          <h1 className="tracking-wider text-[50px] md:text-[100px] font-druk mb-2 leading-[2rem] md:leading-[5rem]">
+          <h1 className="tracking-wider text-[40px] md:text-[100px] font-druk mb-2 leading-[2rem] md:leading-[5rem]">
             <Link href="/" title="Rafael Meza">
-              RAFAEL MEZA
+              <span className="md:hidden">RAFAEL MEZA</span>
+              <span className="hidden md:block">
+                RAFAEL <br /> MEZA
+              </span>
             </Link>
           </h1>
           <span className="block font-roboto text-sm tracking-tighter">
