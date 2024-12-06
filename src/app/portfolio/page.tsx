@@ -19,7 +19,7 @@ const PortfolioSection = ({
   children: ReactNode;
 }) => {
   return (
-    <section className="px-6 py-[50px] justify-center lg:h-[100vh] lg:flex items-center">
+    <section className="px-6 py-[50px] justify-center lg:min-h-[100vh] lg:flex items-center">
       <figure className="relative w-full lg:hidden">
         <Image
           src={imageSrc}
@@ -51,6 +51,12 @@ const PortfolioSection = ({
 };
 
 const projects = [
+  {
+    title: "PORTFOLIO",
+    imageSrc: "/images/portfolio_small.png",
+    features: ["Frontend Development", "HTML5, CSS3, JS, ReactJs, NextJs"],
+    href: "http://rafaelmeza.com/",
+  },
   {
     title: "TIGER LATIN AMERICA",
     imageSrc: "/images/tiger_small.png",
@@ -104,6 +110,7 @@ const projects = [
     imageSrc: "/images/dashboard-yachay_small.png",
     features: ["Frontend Development", "Node, HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/",
+    isOnline: false,
   },
 ];
 

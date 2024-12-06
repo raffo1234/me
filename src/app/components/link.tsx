@@ -11,6 +11,7 @@ export default function UnderlinedLink({
       href={href}
       target="_blank"
       title={`Rafael Meza | ${title}`}
+      className="inline-block"
     >
       <span className="block">{title}</span>
       <span className="block w-full h-1 bg-yellow10"></span>
