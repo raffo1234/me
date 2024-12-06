@@ -7,11 +7,11 @@ export default function Aside() {
       style={{
         backgroundImage: "linear-gradient(120deg, #FFD301 0%, #fda085 100%)",
       }}
-      className="fixed z-30 top-0 left-0 w-full pt-5 lg:w-[350px] md:w-[250px] self-start flex-shrink-0"
+      className="fixed z-30 top-0 left-0 w-full pt-3 lg:w-[350px] md:w-[250px] self-start flex-shrink-0"
     >
-      <header className="px-10 pb-5 md:h-[500px] flex items-center justify-center">
+      <header className="px-6 pb-3 md:h-[500px] flex items-center justify-center">
         <div>
-          <h1 className="tracking-wider text-[40px] md:text-[100px] font-druk mb-2 leading-[2rem] md:leading-[5rem]">
+          <h1 className="tracking-wider text-[34px] md:text-[100px] font-druk leading-[2rem] md:leading-[5rem]">
             <Link href="/" title="Rafael Meza">
               <span className="md:hidden">RAFAEL MEZA</span>
               <span className="hidden md:block">
