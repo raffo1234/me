@@ -20,8 +20,7 @@ const PortfolioSection = ({
 }) => {
   return (
     <section className="px-6 py-[50px] justify-center lg:h-[100vh] lg:flex items-center">
-      <figure className="relative w-full block">
-        <Title>{title}</Title>
+      <figure className="relative w-full lg:hidden">
         <Image
           src={imageSrc}
           alt={title}
@@ -31,9 +30,22 @@ const PortfolioSection = ({
           height={100}
         />
       </figure>
-      <div className="relative z-20 lg:h-[100vh] items-center max-w-[1024px] flex justify-start py-6">
-        <div className="max-w-[360px]">{children}</div>
+      <div className="lg:pl-8 lg:h-[100vh] flex justify-center items-center max-w-[1024px]">
+        <div>
+          <Title>{title}</Title>
+          <div className="max-w-[360px]">{children}</div>
+        </div>
       </div>
+      <figure className="relative w-full hidden lg:block mt-8">
+        <Image
+          src={imageSrc}
+          alt={title}
+          layout="responsive"
+          objectFit="contain"
+          width={100}
+          height={100}
+        />
+      </figure>
     </section>
   );
 };
