@@ -31,7 +31,7 @@ interface Props {
   index: number;
 }
 
-const MenuItem = ({ children, title, slug, index }: Props) => {
+const MenuItem = ({ children, title, slug }: Props) => {
   const pathname = usePathname();
 
   return (
@@ -46,8 +46,6 @@ const MenuItem = ({ children, title, slug, index }: Props) => {
         title={title}
         className={`
           ${pathname === slug ? "bg-gray100 text-gray10" : "hover:bg-gray20"}
-
-          delay${index * 100}
           font-druk  flex items-center justify-center uppercase tracking-wider text-[50px] md:text-[80px] w-full p-4 md:h-full text-center transition duration-500`}
       >
         {children}
@@ -91,7 +89,6 @@ export default function Navigation() {
           </animated.nav>
         ) : null
       )}
-
       <button
         onClick={() => setIsOpenMenu((prev) => !prev)}
         className="fixed group top-3 right-3 md:top-10 md:right-10 z-50"
