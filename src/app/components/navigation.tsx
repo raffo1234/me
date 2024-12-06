@@ -1,29 +1,25 @@
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import { useState } from "react";
-
+import { useTransition, animated } from "@react-spring/web";
 import { usePathname } from "next/navigation";
 
 const pages = [
   {
     title: "Home",
     slug: "/",
-    deg: 0,
   },
   {
     title: "About me",
     slug: "/about",
-    deg: 90,
   },
   {
     title: "Portfolio",
     slug: "/portfolio",
-    deg: 180,
   },
   {
     title: "Contact",
     slug: "/contact",
-    deg: 270,
   },
 ];
 
@@ -32,19 +28,27 @@ interface Props {
   page: string;
   slug: string;
   title: string;
+  index: number;
 }
 
-const MenuItem = ({ children, title, slug }: Props) => {
+const MenuItem = ({ children, title, slug, index }: Props) => {
   const pathname = usePathname();
 
   return (
-    <li className="flex-1 md:h-full">
+    <li
+      style={{
+        backgroundImage: "linear-gradient(120deg, #FFD301 0%, #fda085 100%)",
+      }}
+      className="flex-1 md:h-full"
+    >
       <Link
         href={slug}
         title={title}
         className={`
           ${pathname === slug ? "bg-gray100 text-gray10" : "hover:bg-gray20"}
-          font-druk flex items-center justify-center uppercase tracking-wider text-[50px] md:text-[80px] w-full p-4 md:h-full text-center transition-colors duration-500`}
+
+          delay${index * 100}
+          font-druk  flex items-center justify-center uppercase tracking-wider text-[50px] md:text-[80px] w-full p-4 md:h-full text-center transition duration-500`}
       >
         {children}
       </Link>
@@ -55,27 +59,39 @@ const MenuItem = ({ children, title, slug }: Props) => {
 export default function Navigation() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
+  const transition = useTransition(isOpenMenu, {
+    from: { y: 110, opacity: 0 },
+    enter: { y: 0, opacity: 1 },
+    leave: { y: 110, opacity: 0 },
+  });
+
   return (
     <>
-      <nav
-        style={{
-          backgroundImage: "linear-gradient(120deg, #FFD301 0%, #fda085 100%)",
-        }}
-        className={`${
-          isOpenMenu ? "opacity-100" : "opacity-0 invisible"
-        } w-full fixed top-0 z-40 h-full transition duration-350 ease-in-out left-0 bg-white`}
-      >
-        <div className="relative h-full">
-          <ul className="justify-stretch text-md h-full leading-[4.5rem] w-full md:flex items-center md:flex-row flex-col">
-            {pages.map(({ slug, title }, index) => (
-              <MenuItem title={title} key={index} page={slug} slug={slug}>
-                {pages.at(index)?.title}
-              </MenuItem>
-            ))}
-          </ul>
-        </div>
-      </nav>
-      <div className="flex items-center w-full"></div>
+      {transition((style, item) =>
+        item ? (
+          <animated.nav
+            style={style}
+            className={`w-full fixed top-0 z-40 h-full left-0 bg-white`}
+          >
+            <div className="relative h-full">
+              <ul className="justify-stretch text-md h-full leading-[4.5rem] w-full md:flex items-center md:flex-row flex-col">
+                {pages.map(({ slug, title }, index) => (
+                  <MenuItem
+                    title={title}
+                    key={index}
+                    page={slug}
+                    slug={slug}
+                    index={index}
+                  >
+                    {pages.at(index)?.title}
+                  </MenuItem>
+                ))}
+              </ul>
+            </div>
+          </animated.nav>
+        ) : null
+      )}
+
       <button
         onClick={() => setIsOpenMenu((prev) => !prev)}
         className="fixed group top-3 right-3 md:top-10 md:right-10 z-50"
