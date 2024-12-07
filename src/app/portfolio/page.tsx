@@ -108,7 +108,7 @@ const projects = [
   {
     title: "Dashboard Yachay",
     imageSrc: "/images/dashboard-yachay_small.png",
-    features: ["Frontend Development", "Node, HTML5, CSS3, JS, GSAP, JQUERY"],
+    features: ["Frontend Development", "Node, Angular v1, HTML5, CSS3, JS"],
     href: "/",
     isOnline: false,
   },
