@@ -47,7 +47,7 @@ export default function Footer() {
             />
           </a>
         </div>
-        <p className="text-sm">
+        <p className="text-sm flex justify-end">
           © {currentYear} Rafael Meza. All rights reserved.
         </p>
       </div>

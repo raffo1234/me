@@ -9,6 +9,8 @@ import Link from "next/link";
 import { RiExternalLinkLine } from "react-icons/ri";
 import Title from "../components/Title";
 import { useInView, animated } from "@react-spring/web";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { div } from "framer-motion/client";
 
 const PortfolioSection = ({
   imageSrc,
@@ -158,6 +160,8 @@ const ProjectButton = ({ href, title }: { href: string; title: string }) => {
 };
 
 export default function PortfolioPage() {
+  const [ref, inView] = useInView();
+
   return (
     <main className="lg:pl-[350px] md:pl-[250px] lg:h-[100vh] py-[100px] md:pt-0 relative">
       {projects.map(({ title, href, bgColor, imageSrc, features }, index) => {
@@ -178,8 +182,22 @@ export default function PortfolioPage() {
           </PortfolioSection>
         );
       })}
+      <div ref={ref} className="relative pb-10"></div>
       <div className="animate-bounce lg:visible invisible fixed bottom-10 left-1/2 -translate-x-1/2">
-        <IoIosArrowRoundDown className="text-yellow10" size={80} />
+        {!inView ? (
+          <div className="p-10">
+            <FaArrowDown size={40} />
+          </div>
+        ) : (
+          <button
+            className="p-10"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
+            <FaArrowUp size={40} />
+          </button>
+        )}
       </div>
     </main>
   );
