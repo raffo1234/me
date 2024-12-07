@@ -1,38 +1,41 @@
-import Link from "next/link";
-import React, { ReactNode } from "react";
+"use client";
+
+import React, { Dispatch, ReactNode, SetStateAction } from "react";
 import { useState } from "react";
 import { useTransition, animated } from "@react-spring/web";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const pages = [
   {
     title: "Home",
-    slug: "/",
+    href: "/",
   },
   {
     title: "About me",
-    slug: "/about",
+    href: "/about",
   },
   {
     title: "Portfolio",
-    slug: "/portfolio",
+    href: "/portfolio",
   },
   {
     title: "Contact",
-    slug: "/contact",
+    href: "/contact",
   },
 ];
 
 interface Props {
   children?: ReactNode;
   page: string;
-  slug: string;
+  href: string;
   title: string;
   index: number;
+  setIsOpenMenu: Dispatch<SetStateAction<boolean>>;
 }
 
-const MenuItem = ({ children, title, slug }: Props) => {
+const MenuItem = ({ children, title, href, setIsOpenMenu }: Props) => {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <li
@@ -41,15 +44,19 @@ const MenuItem = ({ children, title, slug }: Props) => {
       }}
       className="flex-1 md:h-full"
     >
-      <Link
-        href={slug}
+      <button
+        onClick={(event) => {
+          event.preventDefault();
+          setIsOpenMenu(false);
+          router.push(href);
+        }}
         title={title}
         className={`
-          ${pathname === slug ? "bg-gray100 text-gray10" : "hover:bg-gray20"}
+          ${pathname === href ? "bg-gray100 text-gray10" : "hover:bg-gray20"}
           font-druk  flex items-center justify-center uppercase tracking-wider text-[50px] md:text-[80px] w-full p-4 md:h-full text-center transition duration-500`}
       >
         {children}
-      </Link>
+      </button>
     </li>
   );
 };
@@ -73,13 +80,14 @@ export default function Navigation() {
           >
             <div className="relative h-full">
               <ul className="justify-stretch text-md h-full leading-[4.5rem] w-full md:flex items-center md:flex-row flex-col">
-                {pages.map(({ slug, title }, index) => (
+                {pages.map(({ href, title }, index) => (
                   <MenuItem
                     title={title}
                     key={index}
-                    page={slug}
-                    slug={slug}
+                    page={href}
+                    href={href}
                     index={index}
+                    setIsOpenMenu={setIsOpenMenu}
                   >
                     {pages.at(index)?.title}
                   </MenuItem>
