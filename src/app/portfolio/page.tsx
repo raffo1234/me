@@ -8,19 +8,35 @@ import { IoIosArrowRoundDown } from "react-icons/io";
 import Link from "next/link";
 import { RiExternalLinkLine } from "react-icons/ri";
 import Title from "../components/Title";
+import { useInView, animated } from "@react-spring/web";
 
 const PortfolioSection = ({
   imageSrc,
   title,
   children,
+  bgColor,
 }: {
   imageSrc: string;
   title: string;
   children: ReactNode;
+  bgColor: string;
 }) => {
+  const [ref, inView] = useInView();
+
   return (
-    <section className="px-6 py-[50px] justify-center lg:min-h-[100vh] lg:flex items-center">
-      <figure className="relative w-full lg:hidden">
+    <animated.section
+      ref={ref}
+      className="px-6 py-[50px] justify-center lg:min-h-[100vh] lg:flex items-center"
+    >
+      <div
+        style={{
+          zIndex: -1,
+          backgroundColor: bgColor,
+        }}
+        className={`${inView ? "opacity-70" : "opacity-0"}
+         fixed top-0 left-0 w-full h-full transition duration-300`}
+      ></div>
+      <figure className="relative w-full lg:hidden z-10">
         <Image
           src={imageSrc}
           alt={title}
@@ -46,7 +62,7 @@ const PortfolioSection = ({
           height={100}
         />
       </figure>
-    </section>
+    </animated.section>
   );
 };
 
@@ -56,61 +72,70 @@ const projects = [
     imageSrc: "/images/portfolio_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, ReactJs, NextJs"],
     href: "http://rafaelmeza.com/",
+    bgColor: "#FDDBBB",
   },
   {
     title: "TIGER LATIN AMERICA",
     imageSrc: "/images/tiger_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/tiger/index.html",
+    bgColor: "#FFF9BF",
   },
   {
     title: "Sunat Renta 2014",
     imageSrc: "/images/renta-2014_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/sunat_2015/index.html",
+    bgColor: "#C2FFC7",
   },
   {
     title: "Golden Palace",
     imageSrc: "/images/goldenpalace_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/goldenpalace/index.html",
+    bgColor: "#FDE7BB",
   },
   {
     title: "Laive",
     imageSrc: "/images/laive_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/laive/index.html",
+    bgColor: "#F9C0AB",
   },
   {
     title: "A La Cancino",
     imageSrc: "/images/cancino_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/cancino/index.html",
+    bgColor: "#FFD18E",
   },
   {
     title: "Grupon",
     imageSrc: "/images/grupon_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/",
+    bgColor: "#A7D477",
   },
   {
     title: "Travelmax",
     imageSrc: "/images/travelmax_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/_projects/travelmax/index.html",
+    bgColor: "#FFD7C4",
   },
   {
     title: "Yachay",
     imageSrc: "/images/yachay_small.png",
     features: ["Frontend Development", "HTML5, CSS3, JS, GSAP, JQUERY"],
     href: "/",
+    bgColor: "#FCC737",
   },
   {
     title: "Dashboard Yachay",
     imageSrc: "/images/dashboard-yachay_small.png",
     features: ["Frontend Development", "Node, Angular v1, HTML5, CSS3, JS"],
     href: "/",
-    isOnline: false,
+    bgColor: "#FADA7A",
   },
 ];
 
@@ -134,10 +159,15 @@ const ProjectButton = ({ href, title }: { href: string; title: string }) => {
 
 export default function PortfolioPage() {
   return (
-    <main className="lg:pl-[350px] md:pl-[250px] lg:h-[100vh] py-[100px] md:pt-0">
-      {projects.map(({ title, href, imageSrc, features }, index) => {
+    <main className="lg:pl-[350px] md:pl-[250px] lg:h-[100vh] py-[100px] md:pt-0 relative">
+      {projects.map(({ title, href, bgColor, imageSrc, features }, index) => {
         return (
-          <PortfolioSection key={index} title={title} imageSrc={imageSrc}>
+          <PortfolioSection
+            bgColor={bgColor}
+            key={index}
+            title={title}
+            imageSrc={imageSrc}
+          >
             <BulletList>
               <h3 className="mb-3 font-bold">I am focused on:</h3>
               {features.map((feature, index) => {

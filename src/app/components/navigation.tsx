@@ -68,6 +68,7 @@ export default function Navigation() {
     from: { y: 110, opacity: 0 },
     enter: { y: 0, opacity: 1 },
     leave: { y: 110, opacity: 0 },
+    config: { duration: 250 },
   });
 
   return (
