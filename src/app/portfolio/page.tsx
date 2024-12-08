@@ -4,13 +4,11 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import BulletList from "../components/bulletList";
 import ListStar from "../components/listStar";
-import { IoIosArrowRoundDown } from "react-icons/io";
 import Link from "next/link";
 import { RiExternalLinkLine } from "react-icons/ri";
 import Title from "../components/Title";
 import { useInView, animated } from "@react-spring/web";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
-import { div } from "framer-motion/client";
 
 const PortfolioSection = ({
   imageSrc,
