@@ -12,37 +12,41 @@ export default function ContactPage() {
           <h3 className="font-bold mb-10">I am accepting freelance jobs.</h3>
           <BulletList>
             <h4 className="mb-4 font-bold">Personal:</h4>
-            <ListStart>
-              <div className="flex items-center space-x-3">
-                <span>EMAIL:</span>
-                <UnderlinedLink
-                  title="rhmcord@gmail.com"
-                  href="mailto:rhmcord@gmail.com"
-                />
-              </div>
-            </ListStart>
+            <ul>
+              <ListStart>
+                <div className="flex items-center space-x-3">
+                  <span>EMAIL:</span>
+                  <UnderlinedLink
+                    title="rhmcord@gmail.com"
+                    href="mailto:rhmcord@gmail.com"
+                  />
+                </div>
+              </ListStart>
+            </ul>
             <ListStart>PHONE: +51 - 997258592</ListStart>
           </BulletList>
           <BulletList>
             <h4 className="mb-4 font-bold">Development:</h4>
-            <ListStart>
-              <div className="flex space-x-3 items-center flex-wrap">
-                <span>GITHUB:</span>
-                <UnderlinedLink
-                  title="raffo1234"
-                  href="https://github.com/raffo1234"
-                ></UnderlinedLink>
-              </div>
-            </ListStart>
-            <ListStart>
-              <div className="flex space-x-3 items-center flex-wrap">
-                <span> LINKEDIN:</span>
-                <UnderlinedLink
-                  href="https://www.linkedin.com/in/rafael-meza/"
-                  title="Rafael Meza"
-                />
-              </div>
-            </ListStart>
+            <ul>
+              <ListStart>
+                <div className="flex space-x-3 items-center flex-wrap">
+                  <span>GITHUB:</span>
+                  <UnderlinedLink
+                    title="raffo1234"
+                    href="https://github.com/raffo1234"
+                  ></UnderlinedLink>
+                </div>
+              </ListStart>
+              <ListStart>
+                <div className="flex space-x-3 items-center flex-wrap">
+                  <span> LINKEDIN:</span>
+                  <UnderlinedLink
+                    href="https://www.linkedin.com/in/rafael-meza/"
+                    title="Rafael Meza"
+                  />
+                </div>
+              </ListStart>
+            </ul>
           </BulletList>
         </div>
       </section>

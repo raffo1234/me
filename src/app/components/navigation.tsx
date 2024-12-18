@@ -103,41 +103,41 @@ export default function Navigation() {
         className="fixed group top-3 right-3 md:top-10 md:right-10 z-50"
         title="Menu Navigation"
       >
-        <div className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all bg-gray100 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-          <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-            <div
+        <span className="relative flex overflow-hidden items-center justify-center w-[50px] h-[50px] transform transition-all bg-gray100 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+          <span className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+            <span
               className={`${
                 isOpenMenu ? "translate-x-10" : ""
               } bg-white h-[2px] w-7 transform transition-all duration-300 origin-left`}
-            ></div>
-            <div
+            ></span>
+            <span
               className={`${
                 isOpenMenu ? "translate-x-10" : ""
               } bg-white h-[2px] w-7 rounded transform transition-all duration-300 delay-75`}
-            ></div>
-            <div
+            ></span>
+            <span
               className={`${
                 isOpenMenu ? "translate-x-10" : ""
               } bg-white h-[2px] w-7 transform transition-all duration-300 origin-left delay-150`}
-            ></div>
-            <div
+            ></span>
+            <span
               className={`${
                 isOpenMenu ? "translate-x-0 w-12" : ""
               } absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 flex w-0`}
             >
-              <div
+              <span
                 className={`${
                   isOpenMenu ? "rotate-45" : ""
                 } absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300`}
-              ></div>
-              <div
+              ></span>
+              <span
                 className={`${
                   isOpenMenu ? "-rotate-45" : ""
                 } absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300`}
-              ></div>
-            </div>
-          </div>
-        </div>
+              ></span>
+            </span>
+          </span>
+        </span>
       </button>
     </>
   );
