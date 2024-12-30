@@ -34,7 +34,7 @@ export default function ContactPage() {
                   <UnderlinedLink
                     title="raffo1234"
                     href="https://github.com/raffo1234"
-                  ></UnderlinedLink>
+                  />
                 </div>
               </ListStart>
               <ListStart>
